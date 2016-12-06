@@ -1,0 +1,25 @@
+<html>
+  {{> '_head'}}
+
+  <body>
+    Smusic!!!
+    <form>
+      <select id="fq1">
+        {{#each availableNotes as |note|}}
+          <option value="{{note}}">{{note}}</option>
+        {{/each}}
+      </select>
+      <select id="fq2">
+        {{#each availableNotes as |note|}}
+          <option value="{{note}}">{{note}}</option>
+        {{/each}}
+      </select>
+      <button type="submit">Generate new sequence</button>
+    </form>
+
+    <button type="button" id="start">Start</button>
+    <button type="button" id="stop">Stop</button>
+
+    {{> '_foot'}}
+  </body>
+</html>

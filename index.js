@@ -25,12 +25,12 @@ app.use(route.get('/', function*() {
 }));
 
 app.use(route.get('/api/notes', function*() {
-  let result = neuralNetwork.activate(this.request.body.inputNotes);
-  winston.debug(`For input set: ${this.request.body.inputNotes}\nGot:\n${result}`);
+  var { notes, raw } = neuralNetwork.activate(this.request.body.inputNotes);
+  winston.debug(`For input set: ${this.request.body.inputNotes}\nGot:\n${notes}`);
 
   this.body = {
-    notes: result,
-    tempo: 180
+    notes,
+    tempo: raw.reduce((s, o) => s + o * 100, 0)
   };
 }));
 
